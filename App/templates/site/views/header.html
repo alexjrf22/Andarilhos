@@ -1,0 +1,30 @@
+<nav class="bg-black dark:bg-black shadow-md">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap items-center justify-between py-3">
+            
+            <!-- Logo -->
+            <div class="text-xl font-bold text-white dark:text-white">
+                <img src="{{ url('App/templates/assets/img/logo.png') }}" alt="Logo" class="h-20 w-40 inline-block mr-2">
+            </div>
+
+            <!-- Botão mobile -->
+            <button id="mobile-btn" class="md:hidden text-white dark:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Links do menu -->
+            <ul id="mobile-menu" class="hidden md:flex w-full md:w-auto flex-col md:flex-row gap-4 mt-4 md:mt-0">
+                <li><a href="{{ url('home') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'home' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Home</a></li>
+                <li><a href="{{ url('videos') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'videos' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Vídeos</a></li>
+                <li><a href="{{ url('cachoeiras') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'cachoeiras' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Cachoeiras</a></li>
+                <li><a href="{{ url('camisas') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'camisetas' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Camisetas</a></li>
+                <li><a href="{{ url('contato') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'contato' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Contato</a></li>
+                <li><a href="{{ url('sobre') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'sobre' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Sobre</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script src="{{ url('App/templates/assets/js/header.js') }}"></script>
