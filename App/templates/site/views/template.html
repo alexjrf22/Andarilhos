@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('App/templates/assets/img/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('App/templates/assets/img/logo.png') }}">
+    <link rel="shortcut icon" href="{{ url('App/templates/assets/img/logo.png') }}">
     <link rel="stylesheet" href="{{ url('App/templates/assets/css/site.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>{{ title }}</title>
-    
+
+    <title>
+        {% if title %}
+            {{ title }}
+        {% else %}
+            {{ constant('APP_NAME') }}
+        {% endif %}
+    </title>
 </head>
 <body>
     {% include 'header.html' %}

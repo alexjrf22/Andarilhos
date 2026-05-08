@@ -166,4 +166,13 @@ class Helpers
         }
         return true;
    }
+
+   public static function redirect(?string $url = null): void
+   {
+        header('HTTP/1.1 302 Found');
+        $location = $url ? self::url($url) : self::getBaseUrl();
+        header('Location: ' . $location);
+        exit;   
+   }
+
 }

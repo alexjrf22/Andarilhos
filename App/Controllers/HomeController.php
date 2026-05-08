@@ -10,46 +10,52 @@ class HomeController extends Controller
         parent::__construct(__DIR__ . '/../templates/site/views');
     }
 
-    public function index()
+    public function index():void 
     {
         echo $this->template->render('index.html', [
-            'title' => 'Home'
+            'title' => 'NG | Home'
         ]);
     }
 
-    public function videos()
+    public function videos(): void
     {
         echo $this->template->render('videos.html', [
-            'title' => 'Vídeos'
+            'title' => 'NG | Vídeos'
         ]);
     }
 
-    public function about()
+    public function about(): void
     {
         echo $this->template->render('about.html', [
-            'title' => 'Sobre Nós',
+            'title' => 'NG | Sobre Nós',
         ]);
     }
 
-    public function contact()
+    public function contact(): void
     {
         echo $this->template->render('contact.html', [
-            'title' => 'Contato',
+            'title' => 'NG | Contato',
         ]);
     }
 
-    public function shirts()
+    public function shirts(): void
     {
         echo $this->template->render('shirts.html', [
-            'title' => 'Camisas',
+            'title' => 'NG | Camisas',
         ]);
     }
 
-    public function waterfalls()
+    public function waterfalls(): void
     {
         echo $this->template->render('waterfalls.html', [
-            'title' => 'Cachoeiras',
+            'title' => 'NG | Cachoeiras',
         ]);
     }
 
+    public function error404(): void
+    {
+        echo $this->template->render('404.html', [
+            'title' => 'NG | Página Não Encontrada',
+        ]);
+    }
 }
