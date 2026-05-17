@@ -2,7 +2,7 @@
 
 namespace App\Core;
 
-class Mensagem
+class Message
 {
     private string $message;
     private string $css;

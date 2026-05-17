@@ -58,4 +58,5 @@ class HomeController extends Controller
             'title' => 'NG | Página Não Encontrada',
         ]);
     }
+
 }
