@@ -27,10 +27,12 @@ class Template
 
     private function helpers(): void
     {
-        [
-            $this->twig->addFunction(new \Twig\TwigFunction('url', function (?string $url=null) {
-                return Helpers::url($url);
-            }))
-        ];
+        $this->twig->addFunction(new \Twig\TwigFunction('url', function (?string $url=null) {
+            return Helpers::url($url);
+        }));
+
+        $this->twig->addFunction(new \Twig\TwigFunction('summarizeText', function (?string $text = null, ?int $length = null) {
+            return Helpers::summarizeText($text, $length);
+        }));
     }
 }

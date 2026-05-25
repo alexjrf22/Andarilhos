@@ -17,9 +17,22 @@
             <!-- Links do menu -->
             <ul id="mobile-menu" class="hidden md:flex w-full md:w-auto flex-col md:flex-row gap-4 mt-4 md:mt-0">
                 <li><a href="{{ url('home') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'home' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Home</a></li>
-                <li><a href="{{ url('videos') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'videos' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Vídeos</a></li>
-                <li><a href="{{ url('cachoeiras') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'cachoeiras' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Cachoeiras</a></li>
-                <li><a href="{{ url('camisas') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'camisetas' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Camisetas</a></li>
+                <div class="relative inline-block">
+  <!-- Dropdown Button -->
+  <button class="px-4 py-2 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 hover:bg-gray-700 transition {{ rota_atual starts with 'categoria' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}" aria-haspopup="true" aria-expanded="false">
+    Categorias
+    <svg class="inline-block w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <!-- Dropdown Items -->
+  <div class="absolute hidden mt-2 bg-white rounded-lg shadow-lg min-w-[200px] z-10">
+    {% for category in categories %}
+    <a href="{{ url('categoria/' ~ category.category_id) }}" class="block px-4 py-2 bg-gray-200 rounded-md text-gray-800 hover:bg-gray-400 aria-label="{{ category.category_name }}">{{category.category_name }}</a>
+    {% endfor %}
+  </div>
+</div>
                 <li><a href="{{ url('contato') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'contato' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Contato</a></li>
                 <li><a href="{{ url('sobre') }}" class="block py-2 px-3 hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'sobre' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Sobre</a></li>
             </ul>
@@ -28,3 +41,4 @@
 </nav>
 
 <script src="{{ url('App/templates/assets/js/header.js') }}"></script>
+<script src="{{ url('App/templates/assets/js/dropdown.js') }}"></script>

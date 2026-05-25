@@ -1,0 +1,17 @@
+<div class="bg-gray-800 text-white p-4 rounded-lg">
+  <!-- Título Categorias -->
+  <h4 class="text-lg font-semibold mb-4 pb-2 border-b border-gray-600">
+    Categorias
+  </h4>
+  
+  <!-- List Group -->
+  <ul class="space-y-1">
+    {% for category in categories %}
+    <li>
+      <a href="{{ url ('categoria/' ~ category.category_id) }}" class="block px-3 py-2 rounded-md hover:bg-gray-700 transition-colors duration-200">
+        {{ category.category_name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

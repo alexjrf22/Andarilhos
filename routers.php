@@ -15,8 +15,8 @@ try {
         Router::get('/sobre', 'HomeController@about');
         Router::get('/contato', 'HomeController@contact');
         Router::get('/camisas', 'HomeController@shirts');
-        Router::get('/cachoeiras', 'HomeController@waterfalls');
-        Router::get('/videos', 'HomeController@videos');
+        Router::get('/post/{id}', 'HomeController@post')->where(['id' => '[0-9]+']);
+        Router::get('/categoria/{id}', 'HomeController@category')->where(['id' => '[0-9]+']);
         Router::get('/404', 'HomeController@error404');
 
         /** Rota para servir arquivos estáticos (CSS, JS, imagens) */
