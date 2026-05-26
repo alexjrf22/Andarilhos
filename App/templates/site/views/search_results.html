@@ -1,0 +1,32 @@
+{% extends 'template.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-12">
+    <div class="bg-white shadow rounded-lg p-6">
+        <h1 class="text-3xl font-semibold text-gray-900 mb-4">Resultados da busca</h1>
+        {% if searchQuery %}
+            <p class="text-gray-600 mb-6">Buscando por: <strong>{{ searchQuery }}</strong></p>
+        {% else %}
+            <p class="text-gray-600 mb-6">Nenhum termo de busca foi informado.</p>
+        {% endif %}
+
+        {% if posts is not empty %}
+            <div class="grid gap-6">
+                {% for post in posts %}
+                    <article class="border border-gray-200 rounded-lg p-5 hover:shadow-lg transition">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                            <a href="{{ url('post/' ~ post.post_id) }}" class="hover:text-yellow-500">{{ post.post_title }}</a>
+                        </h2>
+                        <p class="text-gray-700">{{ summarizeText(post.post_text, 200) }}</p>
+                        <a href="{{ url('post/' ~ post.post_id) }}" class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium">Ler mais</a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="p-6 bg-gray-50 rounded-lg border border-dashed border-gray-300 text-gray-700">
+                Nenhum resultado encontrado para <strong>{{ searchQuery }}</strong>.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
