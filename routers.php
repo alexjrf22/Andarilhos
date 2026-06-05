@@ -3,6 +3,7 @@
 use Pecee\SimpleRouter\SimpleRouter as Router;
 use Pecee\SimpleRouter\Exceptions\NotFoundHttpException;
 use App\Support\Helpers;
+require __DIR__ . '/App/Support/config.php';
 
 
 try {
@@ -21,6 +22,16 @@ try {
         Router::get('/busca/ajax', 'HomeController@searchAjax');
         Router::get('/404', 'HomeController@error404');
 
+        // Routes for admin panel // Rotas administrativas
+        Router::group([], function() {      
+            Router::get(URL_ADMIN, 'AdminController@index');
+            Router::get(URL_ADMIN . '/dashboard', 'AdminController@dashboard');
+            Router::get(URL_ADMIN . '/posts', 'AdminController@posts');
+            Router::get(URL_ADMIN . '/categorias', 'AdminController@category');
+            Router::get(URL_ADMIN . '/contato', 'AdminController@contatc');
+            Router::get(URL_ADMIN . '/sobre', 'AdminController@about');
+        });
+      
         /** Rota para servir arquivos estáticos (CSS, JS, imagens) */
         Router::get('/assets/{path}', function (string $path) {
             $file = __DIR__ . '/App/templates/assets/' . $path;

@@ -1,0 +1,35 @@
+
+<header class="p-3 text-bg-dark">
+    <div class="container">
+        <div
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+        <a
+            href="/"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+        >
+            <svg
+            class="bi me-2"
+            width="40"
+            height="32"
+            role="img"
+            aria-label="Bootstrap"
+            >
+            <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ url('/admin/dashboard') }}" class="nav-link px-2 text-secondary hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'dashboard' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Dashboard</a></li>
+            <li><a href="{{ url('/admin/posts') }}" class="nav-link px-2 text-white">Posts</a></li>
+            <li><a href="{{ url('/admin/categorias') }}" class="nav-link px-2 text-white">Categorias</a></li>
+            <li><a href="{{ url('/admin/contato') }}" class="nav-link px-2 text-white">Contato</a></li>
+            <li><a href="{{ url('/admin/sobre') }}" class="nav-link px-2 text-white">Sobre</a></li>
+        </ul>
+        <div class="d-flex align-items-center ms-auto">
+            <img src="{{ url ('App/templates/admin/assets/img/user.png') }}" alt="User Image" class="rounded-circle me-2" width="32" height="32">
+            <a href="#" class="text-white text-decoration-none">Alexandre Ferreira</a>
+        </div>
+        </div>
+    </div>
+</header>
+     

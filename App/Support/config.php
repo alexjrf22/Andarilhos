@@ -8,4 +8,8 @@ define('DB_HOST', 'localhost');
 define('DB_NAME', 'novagaia');
 define('DB_USER', 'root');
 define('DB_PASS', '');
+define('DB_PORT', '3306');
+define('URL_ADMIN', '/admin');
+define('URL_SITE', '/novagaia');
+
       

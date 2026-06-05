@@ -23,7 +23,7 @@ function renderSuggestions(posts, postUrlBase) {
 
     const items = posts.map(post => {
         const title = post.post_title || 'Sem título';
-        const postUrl = postUrlBase ? `${postUrlBase}/${post.post_id}` : `/post/${post.post_id}`;
+        const postUrl = postUrlBase ? `${postUrlBase}/${post.post_id}` : `novagaia/post/${post.post_id}`;
         return `
             <a href="${postUrl}" class="block px-4 py-3 border-b border-gray-800 text-white hover:bg-gray-800 transition">
                 <div class="font-semibold">${title}</div>
@@ -55,7 +55,7 @@ function fetchSearchSuggestions(query, url, postUrlBase) {
 }
 
 if (searchForm && searchInput) {
-    const searchUrl = searchForm.dataset.searchUrl || '/busca/ajax';
+    const searchUrl = searchForm.dataset.searchUrl || '/novagaia/busca/ajax';
     const postUrlBase = searchForm.dataset.postUrl || '/post';
 
     searchInput.addEventListener('input', () => {

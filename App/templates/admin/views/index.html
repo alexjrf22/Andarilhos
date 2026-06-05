@@ -1,0 +1,46 @@
+
+{% extends 'template.html' %}
+
+{% block content %}
+        <div class="flex items-center justify-center min-h-screen py-10 px-4 sm:px-6 lg:px-8 bg-gray-900">
+            <div class="w-full max-w-md space-y-8 bg-white rounded-lg shadow-2xl">
+                <div>
+                    <h2 class="text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">Efetue login para acessar nosso painel de controle!</h2>
+                </div>
+
+                <form action="" method="post" class="mt-8 space-y-6">
+                    <input type="hidden" name="remember" value="true">
+                    <div class="flex flex-col justify-between items-center py-0 px-4 sm:px-6 lg:px-8">
+                        <label for="email" class="sr-only">Email</label>
+                        <input id="email" name="email" type="email" autocomplete="email" required="" placeholder="Email"
+                            class="mt-1 px-3 py-2 border border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-radius">
+                        <div class="mt-2 relative">
+                            <label for="password" class="sr-only">Senha</label>
+                            <input id="password" name="password" type="password" autocomplete="current-password" required="" placeholder="Senha"
+                                class="mt-1 px-3 py-2 border border-gray-300 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 block w-full shadow-sm sm:text-sm border-radius">
+
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path d="M10.894 2.553a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L10.894 5.447zM3.613 6.84l3.03-3.03a1.5 1.5 0 011.061 2.057 2.025 2.025 0 010 3.042l-3.03 3.03c-.21.21-.44.481-.61.707s-.356.439-.707.61c-.256.168-.592.264-.942.312a1.5 1.5 0 01-2.061 0L3.613 6.84zM14.374 8.499l-4.14-4.141a1 1 0 011.414 0l4.14 4.142c.401.402.803.799 1.207 1.207.511.512.912.923 1.209 1.208.31.29.595.586.786.898a2.25 2.25 0 010 3.144l-4.14 4.142c-.401.402-.803.799-1.207 1.207-.511.512-.912.923-1.209 1.208s-.586-.299-.898-.786a2.25 2.25 0 110-3.144l4.14-4.142c.401-.402.803-.799 1.207-1.207.511-.512.912-.923 1.209-1.208.31-.29.595-.586.786-.898z"></path>
+                                </svg>
+                </div>
+    </div>
+
+                        <button type="submit" class="btn btn-primary hover:bg-indigo-700 active:bg-indigo-800 focus:ring-indigo-500 mt-4 flex items-center justify-center w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Login
+                        </button>
+                    </div>
+                </form>
+
+                <div class="flex items-center justify-between mt-6">
+                    <div class="text-sm leading-5 mb-4">
+                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150 mt-4 py-2 px-4">Esqueceu sua senha?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+
+
+

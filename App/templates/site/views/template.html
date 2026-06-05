@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('App/templates/assets/img/logo.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('App/templates/assets/img/logo.png') }}">
-    <link rel="shortcut icon" href="{{ url('App/templates/assets/img/logo.png') }}">
-    <link rel="stylesheet" href="{{ url('App/templates/assets/css/site.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url('App/templates/site/assets/img/logo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('App/templates/site/assets/img/logo.png') }}">
+    <link rel="shortcut icon" href="{{ url('App/templates/site/assets/img/logo.png') }}">
+    <link rel="stylesheet" href="{{ url('App/templates/site/assets/css/site.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <title>
@@ -27,6 +27,9 @@
         {% include 'footer.html' %}
 
 
-   <script src="{{ url('App/templates/assets/js/site.js') }}"></script>
+    <script src="{{ url('App/templates/site/assets/js/site.js') }}"></script>
+    <script src="{{ url('App/templates/site/assets/js/header.js') }}"></script>
+    <script src="{{ url('App/templates/site/assets/js/search.js') }}"></script>
+    <script src="{{ url('App/templates/site/assets/js/dropdown.js') }}"></script>
 </body>
 </html>

@@ -29,29 +29,45 @@ class HomeController extends Controller
 
     public function about(): void
     {
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->readAll();
+
         echo $this->template->render('about.html', [
             'title' => 'NG | Sobre Nós',
+            'categories' => $categories,
         ]);
     }
 
     public function contact(): void
     {
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->readAll();
+
         echo $this->template->render('contact.html', [
             'title' => 'NG | Contato',
+            'categories' => $categories,
         ]);
     }
 
     public function store(): void
     {
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->readAll();
+
         echo $this->template->render('store.html', [
             'title' => 'NG | Loja',
+            'categories' => $categories,
         ]);
     }
 
     public function error404(): void
     {
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->readAll();
+
         echo $this->template->render('404.html', [
             'title' => 'NG | Página Não Encontrada',
+            'categories' => $categories,
         ]);
     }
 
@@ -67,6 +83,7 @@ class HomeController extends Controller
             http_response_code(404);
             echo $this->template->render('404.html', [
                 'title' => 'NG | Página Não Encontrada',
+                'categories' => $categories,
             ]);
             return;
         }
@@ -140,6 +157,7 @@ class HomeController extends Controller
             'query' => $searchQuery,
             'results' => $posts,
         ], JSON_UNESCAPED_UNICODE);
+
     }
 
 }
