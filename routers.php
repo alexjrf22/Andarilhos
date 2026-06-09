@@ -11,25 +11,35 @@ try {
         Router::setDefaultNamespace('App\Controllers');
 
         /** Rotas API*/
-        Router::get('/', 'HomeController@index');
-        Router::get('/home', 'HomeController@index');
-        Router::get('/sobre', 'HomeController@about');
-        Router::get('/contato', 'HomeController@contact');
-        Router::get('/loja', 'HomeController@store');
-        Router::get('/post/{id}', 'HomeController@post')->where(['id' => '[0-9]+']);
-        Router::get('/categoria/{id}', 'HomeController@category')->where(['id' => '[0-9]+']);
-        Router::get('/busca', 'HomeController@search');
-        Router::get('/busca/ajax', 'HomeController@searchAjax');
-        Router::get('/404', 'HomeController@error404');
+        Router::get('/', 'AppController@index');
+        Router::get('/home', 'AppController@index');
+        Router::get('/sobre', 'AppController@about');
+        Router::get('/contato', 'AppController@contact');
+        Router::get('/loja', 'AppController@store');
+        Router::get('/post/{id}', 'AppController@post')->where(['id' => '[0-9]+']);
+        Router::get('/categoria/{id}', 'AppController@category')->where(['id' => '[0-9]+']);
+        Router::get('/busca', 'AppController@search');
+        Router::get('/busca/ajax', 'AppController@searchAjax');
+        Router::get('/404', 'AppController@error404');
 
         // Routes for admin panel // Rotas administrativas
         Router::group([], function() {      
             Router::get(URL_ADMIN, 'AdminController@index');
             Router::get(URL_ADMIN . '/dashboard', 'AdminController@dashboard');
-            Router::get(URL_ADMIN . '/posts', 'AdminController@posts');
-            Router::get(URL_ADMIN . '/categorias', 'AdminController@category');
             Router::get(URL_ADMIN . '/contato', 'AdminController@contatc');
             Router::get(URL_ADMIN . '/sobre', 'AdminController@about');
+
+            //admin posts
+            Router::get(URL_ADMIN . '/posts', 'AdminController@posts');
+            Router::match(['get', 'post'], URL_ADMIN . '/post/cadastrar', 'AdminPostController@createPost');
+            Router::match(['get','post','put'], URL_ADMIN . '/post/editar/{id}', 'AdminPostController@editPost')->where(['id' => '[0-9]+']); 
+            Router::delete(URL_ADMIN . '/post/deletar/{id}', 'AdminPostController@deletePost')->where(['id' => '[0-9]+']);
+            
+            //admin categories
+            Router::get(URL_ADMIN . '/categorias', 'AdminController@category');
+            Router::match(['get', 'post'], URL_ADMIN . '/categoria/cadastrar', 'AdminCategoryController@createCategory');
+            Router::match(['get', 'post', 'put'], URL_ADMIN . '/categoria/editar/{id}', 'AdminCategoryController@editCategory')->where(['id' => '[0-9]+']);
+            Router::delete(URL_ADMIN . '/categoria/deletar/{id}', 'AdminCategoryController@deleteCategory')->where(['id' => '[0-9]+']);
         });
       
         /** Rota para servir arquivos estáticos (CSS, JS, imagens) */
@@ -84,5 +94,6 @@ try {
         Router::start();
 
     }catch(NotFoundHttpException $e){
-        Helpers::redirect('404');
+        $requestedUrl = $_SERVER['REQUEST_URI'] ?? '/';
+        Helpers::redirect('404?requested_url=' . urlencode($requestedUrl));
     }

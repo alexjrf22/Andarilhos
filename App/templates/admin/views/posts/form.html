@@ -1,0 +1,67 @@
+{% extends 'template.html' %}
+
+{% block content %}
+{% include 'header.html' %}
+  <!-- Cabecalho -->
+  <div class="bg-white shadow">
+    <div class="container mx-auto px-6 py-4">
+      <h1 class="text-2xl text-gray-800 font-bold">Cadastro de Posts</h1>
+    </div>
+</div>
+
+  <!-- Conteudo Principal -->
+  <main class="container mx-auto px-6 py-8">
+    <form action="{{ post ? url('/admin/post/editar/' ~ post.post_id) : url('/admin/post/cadastrar') }}" method="post" class="bg-white shadow rounded-lg p-4">
+
+      <h2 class="text-lg text-gray-800 font-bold mb-4">Informe os Dados do Post</h2>
+
+      <!-- Título -->
+      <div class="mb-6">
+        <label for="title" class="block text-gray-700 text-sm font-medium mb-2">Título</label>
+        <input type="text" id="title" name="post_title" value="{{ post ? post.post_title : '' }}" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500">
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="mb-6">
+        <label for="content" class="block text-gray-700 text-sm font-medium mb-2">Conteúdo</label>
+        <textarea id="content" name="post_text" required rows="4" class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500">{{ post ? post.post_text : '' }}</textarea>
+      </div>
+   
+      <div class="flex gap-4 mb-6">
+        
+        <!-- Categoria -->
+        <div class="flex-1">
+          <label for="category" class="block text-gray-700 text-sm font-medium mb-2">Categoria</label>
+          <select class="form-select w-full" aria-label="Default select example" id="category" name="category_id" required>
+            <option value="" disabled {{ post ? '' : 'selected' }}>Selecione uma categoria</option>
+            {% for category in categories %}
+              <option value="{{ category.category_id }}" {{ post and post.category_id == category.category_id ? 'selected' : '' }}>{{ category.category_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        
+        <!-- Status -->
+        <div class="flex-1">
+          <label for="status" class="block text-gray-700 text-sm font-medium mb-2">Status</label>
+          <select class="form-select w-full" aria-label="Default select example" id="status" name="post_status" required>
+            <option value="" disabled {{ post ? '' : 'selected' }}>Selecione um status</option>
+            <option value="1" {{ post and post.post_status == 1 ? 'selected' : '' }}>Publicado</option>
+            <option value="0" {{ post and post.post_status == 0 ? 'selected' : '' }}>Inativo</option>
+          </select>
+        </div>
+        
+      </div>
+
+      {# <!-- Autor -->
+      <div class="mb-6">
+        <label for="author" class="block text-gray-700 text-sm font-medium mb-2">Autor</label>
+        <input type="text" id="author" name="author" required class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500">
+      </div> #}
+
+      <!-- Botão de Envio -->
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+        {{ post ? 'Salvar Alterações' : 'Cadastrar Post' }}
+      </button>
+    </form>
+  </main>
+{% endblock %}

@@ -41,7 +41,7 @@ class AdminController extends Controller
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->readAll();
 
-        echo $this->template->render('posts.html', [
+        echo $this->template->render('posts/posts.html', [
             
             'posts' => $posts,
             'categories' => $categories
@@ -69,7 +69,7 @@ class AdminController extends Controller
     {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->readAll();
-        echo $this->template->render('category.html', [
+        echo $this->template->render('categories/category.html', [
             'categories' => $categories
         ]);
     }

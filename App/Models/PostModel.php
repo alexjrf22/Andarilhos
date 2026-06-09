@@ -17,7 +17,7 @@ class PostModel
         $this->conn = BdConn::getInstance();
     }
     
-    public function readAll()
+    public function readAll(): array
     {
         $sql = "SELECT * FROM post";
         $stmt = $this->conn->prepare($sql);
@@ -25,18 +25,20 @@ class PostModel
         return $stmt->fetchAll();  
     }
 
-    public function create(string $post_title, string $post_text)
+    public function create(string $post_title, string $post_text, int $post_status, int $post_category_id): bool
     {
-        $sql = "INSERT INTO post (post_title, post_text) 
-                           VALUES (:post_title, :post_text)";
+        $sql = "INSERT INTO post (post_title, post_text, post_status, category_id) 
+                           VALUES (:post_title, :post_text, :post_status, :post_category_id)";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':post_title', $post_title, PDO::PARAM_STR);
         $stmt->bindParam(':post_text', $post_text, PDO::PARAM_STR);
+        $stmt->bindParam(':post_status', $post_status, PDO::PARAM_INT);
+        $stmt->bindParam(':post_category_id', $post_category_id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 
-    public function find(int $post_id)
+    public function find(int $post_id): ?array
     {
         $this->post_id = $post_id;
         $sql = "SELECT * FROM post WHERE post_id = :post_id";
@@ -46,7 +48,7 @@ class PostModel
         return $stmt->fetch();  
     }
 
-    public function findByCategory(int $category_id)
+    public function findByCategory(int $category_id): array
     {
         $sql = "SELECT * FROM post WHERE category_id = :category_id";
         $stmt = $this->conn->prepare($sql);
@@ -55,7 +57,7 @@ class PostModel
         return $stmt->fetchAll();
     }
 
-    public function delete(int $post_id)
+    public function delete(int $post_id): bool
     {
         $sql = "DELETE FROM post WHERE post_id = :post_id";
         $stmt = $this->conn->prepare($sql);
@@ -63,13 +65,17 @@ class PostModel
         return $stmt->execute();
     }
 
-    public function update(int $post_id, string $post_title, string $post_text)
+    public function update(int $post_id, string $post_title, string $post_text, int $post_status, int $post_category_id): bool
     {
-        $sql = "UPDATE post SET post_title = :post_title, post_text = :post_text WHERE post_id = :post_id";
+        $sql = "UPDATE post SET post_title = :post_title, post_text = :post_text, 
+                                post_status = :post_status, category_id = :post_category_id 
+                          WHERE post_id = :post_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':post_id', $post_id, PDO::PARAM_INT);
         $stmt->bindParam(':post_title', $post_title, PDO::PARAM_STR);
         $stmt->bindParam(':post_text', $post_text, PDO::PARAM_STR);
+        $stmt->bindParam(':post_status', $post_status, PDO::PARAM_INT);
+        $stmt->bindParam(':post_category_id', $post_category_id, PDO::PARAM_INT);
         return $stmt->execute();
     }
 

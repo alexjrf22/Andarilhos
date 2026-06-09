@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Support;
+use Pecee\SimpleRouter\SimpleRouter as Router;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Lexer;
@@ -33,6 +34,11 @@ class Template
 
         $this->twig->addFunction(new \Twig\TwigFunction('summarizeText', function (?string $text = null, ?int $length = null) {
             return Helpers::summarizeText($text, $length);
+        }));
+
+        $this->twig->addFunction(new \Twig\TwigFunction('csrf_token', function () {
+            $verifier = Router::router()->getCsrfVerifier();
+            return $verifier ? $verifier->getTokenProvider()->getToken() : null;
         }));
     }
 }

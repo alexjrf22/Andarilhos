@@ -5,7 +5,7 @@ use App\Core\Controller;
 use App\Models\PostModel;
 use App\Models\CategoryModel;
 
-class HomeController extends Controller
+class AppController extends Controller
 {
     public function __construct()
     {
@@ -65,9 +65,12 @@ class HomeController extends Controller
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->readAll();
 
+        $requestedUrl = $_GET['requested_url'] ?? ($_SERVER['REQUEST_URI'] ?? '/');
+
         echo $this->template->render('404.html', [
             'title' => 'NG | Página Não Encontrada',
             'categories' => $categories,
+            'requested_url' => $requestedUrl,
         ]);
     }
 
@@ -84,6 +87,7 @@ class HomeController extends Controller
             echo $this->template->render('404.html', [
                 'title' => 'NG | Página Não Encontrada',
                 'categories' => $categories,
+                'requested_url' => $_SERVER['REQUEST_URI'] ?? '/', 
             ]);
             return;
         }
@@ -104,6 +108,7 @@ class HomeController extends Controller
             http_response_code(404);
             echo $this->template->render('404.html', [
                 'title' => 'NG | Página Não Encontrada',
+                'requested_url' => $_SERVER['REQUEST_URI'] ?? '/', 
             ]);
             return;
         }

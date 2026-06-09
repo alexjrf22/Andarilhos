@@ -81,6 +81,15 @@ footer {
     color: #95a5a6;
 }
 
+header {
+    background-image: url('../img/bgHeader.png');
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+
 @media (max-width: 768px) {
     footer {
         padding: 30px 15px 15px;
@@ -91,3 +100,4 @@ footer {
         padding-bottom: 20px;
     }
 }
+
