@@ -1,0 +1,9 @@
+   <nav class="p-4>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ url('/admin/dashboard') }}" class="nav-link px-2 text-secondary hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'dashboard' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Dashboard</a></li>
+            <li><a href="{{ url('/admin/posts') }}" class="nav-link px-2 text-white">Posts</a></li>
+            <li><a href="{{ url('/admin/categorias') }}" class="nav-link px-2 text-white">Categorias</a></li>
+            <li><a href="{{ url('/admin/contato') }}" class="nav-link px-2 text-white">Contato</a></li>
+            <li><a href="{{ url('/admin/sobre') }}" class="nav-link px-2 text-white">Sobre</a></li>
+        </ul>
+    </nav>

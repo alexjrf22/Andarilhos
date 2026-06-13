@@ -68,3 +68,9 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+
+        /* Transição suave para o overlay */
+    #overlay {
+        transition: opacity 0.3s ease;
+    }
+      

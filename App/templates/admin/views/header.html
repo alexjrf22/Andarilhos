@@ -1,35 +1,50 @@
+<header class="bg-gray-900 text-white p-3">
+    <div class="container mx-auto">
+        <div class="flex items-center justify-between">
+            <!-- Botão Menu Lateral (esquerda) -->
+            <button type="button" id="menuBtn" class="text-white hover:text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
 
-<header class="p-3 text-bg-dark">
-    <div class="container">
-        <div
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-        >
-        <a
-            href="/"
-            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-        >
-            <svg
-            class="bi me-2"
-            width="40"
-            height="32"
-            role="img"
-            aria-label="Bootstrap"
-            >
-            <use xlink:href="#bootstrap"></use>
-            </svg>
-        </a>
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{{ url('/admin/dashboard') }}" class="nav-link px-2 text-secondary hover:text-yellow-400 hover:text-lg transition {{ rota_atual == 'dashboard' ? 'text-white font-semibold' : 'text-gray-300 dark:text-gray-300' }}">Dashboard</a></li>
-            <li><a href="{{ url('/admin/posts') }}" class="nav-link px-2 text-white">Posts</a></li>
-            <li><a href="{{ url('/admin/categorias') }}" class="nav-link px-2 text-white">Categorias</a></li>
-            <li><a href="{{ url('/admin/contato') }}" class="nav-link px-2 text-white">Contato</a></li>
-            <li><a href="{{ url('/admin/sobre') }}" class="nav-link px-2 text-white">Sobre</a></li>
-        </ul>
-        <div class="d-flex align-items-center ms-auto">
-            <img src="{{ url ('App/templates/admin/assets/img/user.png') }}" alt="User Image" class="rounded-circle me-2" width="32" height="32">
-            <a href="#" class="text-white text-decoration-none">Alexandre Ferreira</a>
-        </div>
+            <!-- Logo centralizada -->
+            <a href="{{ url('/home') }}" class="group flex items-center justify-center transition-transform duration-300 active:scale-95">
+                <img src="{{ url('App/templates/admin/assets/img/logo.png') }}" 
+                     alt="Logo"
+                     class="h-16 w-auto object-contain transition-all duration-500 
+                            filter drop-shadow-[0_0_5px_rgba(255,255,255,0.1)] 
+                            group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(100,255,255,0.4)]">
+            </a>
+
+            <!-- Avatar do usuário (direita) -->
+            <div class="flex items-center space-x-2">
+                <img src="{{ url('App/templates/admin/assets/img/user.png') }}" 
+                     alt="User Image" 
+                     class="rounded-full w-8 h-8 object-cover">
+                <span class="text-white hidden sm:inline">Alexandre Ferreira</span>
+            </div>
         </div>
     </div>
 </header>
+
+<!-- Menu Lateral (off-canvas) -->
+<div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50 shadow-lg">
+    <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+        <span class="text-xl font-bold">Menu</span>
+        <button id="closeMenuBtn" class="text-white hover:text-gray-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <nav class="p-4">
+      {% include "menu.html" %}
+    </nav>
+</div>
+
+<!-- Overlay (fundo escuro) -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
+
+
      
